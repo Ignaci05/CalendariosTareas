@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="8dp"
+    android:layout_marginVertical="4dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="2dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp">
+
+        <CheckBox
+            android:id="@+id/cbCompletada"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:id="@+id/tvDescripcionTarea"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Estudiar para el examen"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toEndOf="@id/cbCompletada"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/tvFechaTarea"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="24/11/2025"
+            android:textSize="12sp"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="4dp"
+            app:layout_constraintStart_toStartOf="@id/tvDescripcionTarea"
+            app:layout_constraintTop_toBottomOf="@id/tvDescripcionTarea"/>
+
+        <TextView
+            android:id="@+id/tvTipoTarea"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Examen"
+            android:textSize="10sp"
+            android:textAllCaps="true"
+            android:background="#E0E0E0"
+            android:paddingHorizontal="6dp"
+            android:paddingVertical="2dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

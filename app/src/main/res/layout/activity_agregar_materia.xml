@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nueva Materia"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@color/primary_dark"
+        android:layout_marginBottom="24dp"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nombre de la asignatura"
+        android:layout_marginBottom="16dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etNombreMateria"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textCapWords"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Elige un color:"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"/>
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioGroup
+            android:id="@+id/rgColores"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rbRojo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rojo"
+                android:layout_marginEnd="8dp"/>
+
+            <RadioButton
+                android:id="@+id/rbAzul"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Azul"
+                android:layout_marginEnd="8dp"/>
+
+            <RadioButton
+                android:id="@+id/rbVerde"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Verde"
+                android:layout_marginEnd="8dp"/>
+
+            <RadioButton
+                android:id="@+id/rbAmarillo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Amarillo"/>
+        </RadioGroup>
+    </HorizontalScrollView>
+
+    <Button
+        android:id="@+id/btnGuardarMateria"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Guardar Materia"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="@color/primary"/>
+
+</LinearLayout>
