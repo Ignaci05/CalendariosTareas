@@ -11,7 +11,7 @@ import com.example.calendariostareas.modelos.Materia;
 import com.example.calendariostareas.modelos.Tarea;
 
 // 1. Definimos las Tablas y la Versión
-@Database(entities = {Materia.class, Tarea.class}, version = 1)
+@Database(entities = {Materia.class, Tarea.class}, version = 1, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
 
     // 2. Exponemos los DAOs (Para que el resto de la app los use)

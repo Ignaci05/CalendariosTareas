@@ -25,6 +25,10 @@
         <activity android:name=".AgregarMateriaActivity" />
         <activity android:name=".AgregarTareaActivity" />
         <activity android:name=".DetalleMateriaActivity" />
+        <activity android:name=".PerfilActivity" />
+        <activity android:name=".AjustesActivity" />
+
+
     </application>
 
 </manifest>

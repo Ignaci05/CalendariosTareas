@@ -13,23 +13,28 @@ import java.util.List;
 @Dao
 public interface TareaDao {
 
-    // Guardar tarea
+    // Crear una tarea nueva
     @Insert
     void insert(Tarea tarea);
 
-    // Obtener TODAS las tareas
-    @Query("SELECT * FROM tareas ORDER BY fechaEntrega ASC")
-    List<Tarea> getAll();
-
-    // Obtener tareas de UNA sola materia (Filtrado)
-    @Query("SELECT * FROM tareas WHERE idMateria = :materiaId")
-    List<Tarea> getTareasPorMateria(int materiaId);
-
-    // Actualizar (Sirve para marcar como completada)
+    // ACTUALIZAR UNA TAREA EXISTENTE (Esto es lo que usaremos al editar)
+    // Room busca la tarea por su 'idTarea' y actualiza el resto de campos.
     @Update
     void update(Tarea tarea);
 
     // Borrar tarea
     @Delete
     void delete(Tarea tarea);
+
+    // Obtener todas para la lista general
+    @Query("SELECT * FROM tareas ORDER BY fechaEntrega ASC")
+    List<Tarea> getAllTareas();
+
+    // Obtener tareas de una materia específica
+    @Query("SELECT * FROM tareas WHERE idMateria = :materiaId")
+    List<Tarea> getTareasPorMateria(int materiaId);
+
+    // Obtener tareas por rango de fecha (Para el calendario)
+    @Query("SELECT * FROM tareas WHERE fechaEntrega >= :desde AND fechaEntrega <= :hasta")
+    List<Tarea> getTareasPorFecha(long desde, long hasta);
 }

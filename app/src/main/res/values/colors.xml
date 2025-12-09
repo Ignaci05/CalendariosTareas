@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
 
-    <color name="primary">#2196F3</color>
-    <color name="primary_dark">#1976D2</color>
-    <color name="accent">#FF4081</color>
+    <color name="primary">#66BB6A</color>
+    <color name="primary_variant">#338A3E</color>
+    <color name="primary_dark">#1B5E20</color> <color name="secondary">#A5D6A7</color>
+    <color name="secondary_transparent">#33A5D6A7</color>
+    <color name="accent">#4CAF50</color>
 
-    <color name="background_light">#F5F5F5</color>
+    <color name="background_app">#F3F4F6</color>
+    <color name="background_light">#FFFFFF</color>
     <color name="card_background">#FFFFFF</color>
-    <color name="text_primary">#212121</color>
-    <color name="text_secondary">#757575</color>
+    <color name="surface_card">#FFFFFF</color>
+
+    <color name="text_primary">#121212</color>
+
+    <color name="text_secondary">#424242</color>
+
+    <color name="divider">#BDBDBD</color>
 </resources>

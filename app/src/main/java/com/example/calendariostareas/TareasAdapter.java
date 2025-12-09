@@ -22,10 +22,10 @@ public class TareasAdapter extends RecyclerView.Adapter<TareasAdapter.ViewHolder
     private List<Tarea> listaTareas;
     private OnTareaActionListener listener;
 
-    // Interfaz para comunicar eventos a la Actividad
+    // Interfaz para comunicar eventos (Clic y Checkbox)
     public interface OnTareaActionListener {
-        void onTareaCheckChanged(Tarea tarea); // Cuando marcan el checkbox
-        void onTareaClick(Tarea tarea);        // (Opcional) Para ver detalles o borrar después
+        void onTareaCheckChanged(Tarea tarea); // Para tachar/destachar
+        void onTareaClick(Tarea tarea);        // Para EDITAR
     }
 
     public TareasAdapter(List<Tarea> listaTareas, OnTareaActionListener listener) {
@@ -52,29 +52,41 @@ public class TareasAdapter extends RecyclerView.Adapter<TareasAdapter.ViewHolder
         holder.tvFecha.setText(sdf.format(new Date(tarea.fechaEntrega)));
 
         // --- ESTADO DEL CHECKBOX ---
-        // Quitamos el listener temporalmente para evitar bugs al reciclar vistas
-        holder.cbCompletada.setOnCheckedChangeListener(null);
+        holder.cbCompletada.setOnCheckedChangeListener(null); // Evitar bugs al reciclar
         holder.cbCompletada.setChecked(tarea.esCompletada);
-
-        // Efecto visual: Tachado si está completada
         actualizarEstiloTachado(holder.tvDescripcion, tarea.esCompletada);
 
-        // Activamos el listener de nuevo
+        // 1. LISTENER DEL CHECKBOX (Marcar como hecha)
         holder.cbCompletada.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            tarea.esCompletada = isChecked; // Actualizamos el objeto local
+            tarea.esCompletada = isChecked;
             actualizarEstiloTachado(holder.tvDescripcion, isChecked);
-            listener.onTareaCheckChanged(tarea); // Avisamos a la base de datos
+            listener.onTareaCheckChanged(tarea);
+        });
+
+        // 2. LISTENER DE TODA LA TARJETA (Para Editar) <--- ¡ESTO ES LO QUE FALTABA!
+        holder.itemView.setOnClickListener(v -> {
+            listener.onTareaClick(tarea);
         });
     }
 
     private void actualizarEstiloTachado(TextView textView, boolean completada) {
         if (completada) {
             textView.setPaintFlags(textView.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-            textView.setAlpha(0.5f); // Hacemos el texto un poco transparente
+            textView.setAlpha(0.5f);
         } else {
             textView.setPaintFlags(textView.getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
-            textView.setAlpha(1.0f); // Texto normal
+            textView.setAlpha(1.0f);
         }
+    }
+
+    // Métodos auxiliares para Swipe
+    public Tarea getTareaAt(int position) {
+        return listaTareas.get(position);
+    }
+
+    public void eliminarTarea(int position) {
+        listaTareas.remove(position);
+        notifyItemRemoved(position);
     }
 
     @Override
@@ -91,16 +103,5 @@ public class TareasAdapter extends RecyclerView.Adapter<TareasAdapter.ViewHolder
             tvTipo = itemView.findViewById(R.id.tvTipoTarea);
             cbCompletada = itemView.findViewById(R.id.cbCompletada);
         }
-    }
-
-    // Método 1: Para obtener el objeto Tarea según su posición
-    public Tarea getTareaAt(int position) {
-        return listaTareas.get(position);
-    }
-
-    // Método 2: Para eliminarla visualmente de la lista y refrescar
-    public void eliminarTarea(int position) {
-        listaTareas.remove(position);
-        notifyItemRemoved(position); // Esto hace la animación bonita de borrado
     }
 }

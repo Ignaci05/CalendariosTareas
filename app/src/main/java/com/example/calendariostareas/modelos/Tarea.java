@@ -4,6 +4,7 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 import androidx.room.ColumnInfo;
+import androidx.room.Ignore;
 
 // AQUÍ CONECTAMOS LAS TABLAS
 @Entity(tableName = "tareas",
@@ -18,7 +19,8 @@ public class Tarea {
     @PrimaryKey(autoGenerate = true)
     public int idTarea;
 
-    @ColumnInfo(name = "idMateria", index = true) // 'index = true' hace que las búsquedas sean rápidas
+    @ColumnInfo(name = "idMateria", index = true)
+    // 'index = true' hace que las búsquedas sean rápidas
     public int idMateria;
 
     @ColumnInfo(name = "descripcion")
@@ -38,6 +40,7 @@ public class Tarea {
     }
 
     // Constructor para crear nueva tarea
+    @Ignore
     public Tarea(int idMateria, String descripcion, long fechaEntrega, String tipo) {
         this.idMateria = idMateria;
         this.descripcion = descripcion;

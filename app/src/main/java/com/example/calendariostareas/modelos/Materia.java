@@ -3,6 +3,7 @@ package com.example.calendariostareas.modelos;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 import androidx.room.ColumnInfo;
+import androidx.room.Ignore;
 
 @Entity(tableName = "materias") // Esto le dice a Android: "Esta clase es una Tabla SQL"
 public class Materia {
@@ -21,6 +22,7 @@ public class Materia {
     }
 
     // Constructor para cuando nosotros creamos una materia nueva
+    @Ignore
     public Materia(String nombre, String color) {
         this.nombre = nombre;
         this.color = color;
